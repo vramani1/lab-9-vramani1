@@ -45,12 +45,13 @@ int main(int argc, char *argv[]) {
   //calculate error using M_Pi
   double error = M_PI - sum;
   //print results
-  printf("Estimated value of Pi for %d points using Simpson's rule = %f\n", areas, sum);
-  printf("Computation error = Exact value - Estimated value = %f\n", error);
+  printf("Estimated value of Pi for %d points using Simpson's rule = %.15f\n", areas, sum);
+  printf("Computation error = Exact value - Estimated value = %.15f\n", error);
   return 0;
 }
   
 	
 	
 	
+
 
