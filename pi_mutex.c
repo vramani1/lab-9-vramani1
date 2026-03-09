@@ -16,7 +16,7 @@ pthread_mutex_t m;
 void* calculate_pi(void* arg) {
     // Cast the argument directly to our starting index
     long start = (long)arg;
-    double lsum = 0.0;
+    double localSum = 0.0;
   
     //calc upper limit
     long upperLim = start + (6400000 / numThreads);
@@ -43,7 +43,7 @@ void* calculate_pi(void* arg) {
     pthread_mutex_lock(&m);
     sum += localSum;
     pthread_mutex_unlock(&m);
-    return;
+    return NULL;
 }
 
 //main takes in 2 arguments from cmd line, one being num threads
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
     }
 
     xIncrement = 1.0 / areas;
-    pthread_mutex_init(&sum_mutex, NULL);
+    pthread_mutex_init(&m, NULL);
 
     pthread_t threads[numThreads];
 
@@ -92,8 +92,9 @@ int main(int argc, char *argv[]) {
     // Print results
     printf("Estimated value of Pi for %.0f points using Simpson's rule = %.15f\n", areas, sum);
     printf("Computation error = Exact value - Estimated value = %.15f\n", error);
-    printf("Total runtime: %.15f seconds\n", elapsed_time);
+    printf("Total runtime: %.15f seconds\n", totalTime);
 
-    pthread_mutex_destroy(&sum_mutex);
+    pthread_mutex_destroy(&m);
     return 0;
 }
+
