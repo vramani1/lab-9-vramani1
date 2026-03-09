@@ -15,8 +15,8 @@ int main(int argc, char *argv[]) {
       return 1;
   }
   //turn n into the correct areas
-  int areas = pow(10, n);
-  int areaCounter = 0;
+  double areas = pow(10, n);
+  double areaCounter = 0.0;
   double sum = 0;
   //define amount x should increment by dividing 1 by area
   double xIncrement = 1.0/areas;
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
   //calculate error using M_Pi
   double error = M_PI - sum;
   //print results
-  printf("Estimated value of Pi for %d points using Simpson's rule = %.15f\n", areas, sum);
+  printf("Estimated value of Pi for %.0f points using Simpson's rule = %.15f\n", areas, sum);
   printf("Computation error = Exact value - Estimated value = %.15f\n", error);
   return 0;
 }
