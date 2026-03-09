@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+//called from command line with 2 arguments one being a num 1-10. Returns 1 if error, 0 is success.
 int main(int argc, char *argv[]) {
   if (argc != 2) {
       printf("Usage: ./pi_serial num(1-10)\n");
@@ -15,14 +16,32 @@ int main(int argc, char *argv[]) {
   }
   //turn n into the correct areas
   int areas = pow(10, n);
+  int areaCounter = 0;
   double sum = 0;
   //define amount x should increment by dividing 1 by area
-  double xIncrement = 1/areas;
+  double xIncrement = 1.0/areas;
+  double currentx = 0;
+  sum += (double) 4.0/(1.0 + pow(currentx, 2));
+  currentx += xIncrement;
+  //simpson's rule iterations
+  while (areaCounter < areas) {
+    
+    sum += ((double) 4.0/(1.0 + pow(currentx, 2)) * 4);
+    areaCounter++;
+    currentx += xIncrement;
+    //break to not exceed
+    if (!(areaCounter < areas)) {
+      break;
+    }
   
-  for (double currentx = 0; currentx <= 1; currentx += xIncrement) {
-      //equation to calculate pi using integral
-      sum += (double) 4.0/(1.0 + pow(currentx, 2));
+    sum += ((double) 4.0/(1.0 + pow(currentx, 2)) * 2);
+    areaCounter++;
+    currentx += xIncrement;
+      
   }
+
+  sum += (double) 4.0/(1.0 + pow(currentx, 2));
+  sum = sum * (xIncrement/3.0);
   //calculate error using M_Pi
   double error = M_PI - sum;
   //print results
@@ -34,3 +53,4 @@ int main(int argc, char *argv[]) {
 	
 	
 	
+
