@@ -30,7 +30,17 @@ lab8:	lab8.c
 	gcc -o lab8 lab8.c
 	./lab8 schedules.txt
 
+pi_serial:	pi_serial.c
+	gcc -o pi_serial pi_serial.c
+	./pi_serial 1
 
+pi_mutex:	pi_mutex.c
+	gcc -o pi_mutex pi_mutex.c
+	./pi_mutex 1
+
+pi_semaphore:	pi_semaphore.c
+	gcc -o pi_semaphore pi_semaphore.c
+	./pi_semaphore 1
 # The clean command has been added by TA
 clean:
 	rm -f lab8
