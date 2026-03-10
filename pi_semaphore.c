@@ -1,4 +1,4 @@
-//Varun Ramani, parallel pi estimation using pthreads and Simpson's Rule
+//Varun Ramani, parallel pi estimation using pthreads, semaphores, and Simpson's Rule
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
