@@ -14,7 +14,7 @@ pthread_mutex_t m;
 
 //thread function takes in long for index at which to start at
 void* calculate_pi(void* arg) {
-    // Cast the argument directly to our starting index
+    //cast arg to start idex
     long start = (long)arg;
     double localSum = 0.0;
   
@@ -97,4 +97,5 @@ int main(int argc, char *argv[]) {
     pthread_mutex_destroy(&m);
     return 0;
 }
+
 
