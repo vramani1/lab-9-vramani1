@@ -30,6 +30,7 @@ lab8:	lab8.c
 	gcc -o lab8 lab8.c
 	./lab8 schedules.txt
 
+
 # The clean command has been added by TA
 clean:
 	rm -f lab8
